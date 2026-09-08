@@ -1,0 +1,11 @@
+// Consumes FacePlugin Document Reader AAR (same as DocumentReader-Android-App).
+// Drop documentreadersdk.aar here from the Android Drive folder / App export.
+def aar = file("documentreadersdk.aar")
+if (!aar.exists()) {
+    throw new GradleException(
+        "Missing example/android/libdocsdk/documentreadersdk.aar.\n" +
+        "Copy it from DocumentReader-Android-App/libdocsdk/ or the Drive Android pack."
+    )
+}
+configurations.maybeCreate("default")
+artifacts.add("default", aar)
